@@ -1,0 +1,802 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f0da93d9-a358-458a-a8cd-614deb5bd206",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "course_name = ['Data Science', 'Machine Learning', 'Big Data', 'Data Engineer']\n",
+    "duration = [2,3,6,4]\n",
+    "df = pd.DataFrame(data = {'course_name' : course_name, 'duration' : duration})"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "f3830220-0bd5-4d50-9bd0-17c022f7097f",
+   "metadata": {},
+   "source": [
+    "Q1. Write a code to print the data present in the second row of the dataframe, df."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "54b25fdb-502d-40ac-83d2-282787445800",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "course_name    Machine Learning\n",
+       "duration                      3\n",
+       "Name: 1, dtype: object"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.iloc[1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "386c1184-64f2-4027-b385-7f1741d243cb",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "course_name    Machine Learning\n",
+       "duration                      3\n",
+       "Name: 1, dtype: object"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.loc[1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b42f4dcb-20d2-4d60-b08c-87c106480803",
+   "metadata": {},
+   "source": [
+    "Q2. What is the difference between the functions loc and iloc in pandas.DataFrame?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "73d59be4-cc03-4f6e-99a5-795386e262b6",
+   "metadata": {},
+   "source": [
+    "The main distinction between the two methods is:\n",
+    "\n",
+    "loc gets rows (and/or columns) with particular labels.\n",
+    "iloc gets rows (and/or columns) at integer locations."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d239ab71-bc6c-47f3-a56f-041480869d08",
+   "metadata": {},
+   "source": [
+    "Q3. Reindex the given dataframe using a variable, reindex = [3,0,1,2] and store it in the variable, new_df\n",
+    "then find the output for both new_df.loc[2] and new_df.iloc[2]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "e785b94e-e063-4bb3-b550-d7ad25b8cbd0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_df = df.reindex= [3,0,1,2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "edeabc53-6bdc-48f2-92aa-af645c769e39",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "course_name    Big Data\n",
+       "duration              6\n",
+       "Name: 2, dtype: object"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.loc[2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "2d606128-1ba4-4c9f-8e3e-1d555788239a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "course_name    Big Data\n",
+       "duration              6\n",
+       "Name: 2, dtype: object"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.iloc[2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "7432d0bc-27d5-468e-9ad3-927eaa62f6a3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "columns = ['column_1', 'column_2', 'column_3', 'column_4', 'column_5', 'column_6']\n",
+    "indices = [1,2,3,4,5,6]\n",
+    "#Creating a dataframe:\n",
+    "df1 = pd.DataFrame(np.random.rand(6,6), columns = columns, index = indices)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "740ca698-1d0b-4614-a796-25128d7f4640",
+   "metadata": {},
+   "source": [
+    "Q4. Write a code to find the following statistical measurements for the above dataframe df1:\n",
+    "(i) mean of each and every column present in the dataframe.\n",
+    "(ii) standard deviation of column, ‘column_2’"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "ca1beded-37f9-4cc0-9bee-e1d02689053b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>column_1</th>\n",
+       "      <th>column_2</th>\n",
+       "      <th>column_3</th>\n",
+       "      <th>column_4</th>\n",
+       "      <th>column_5</th>\n",
+       "      <th>column_6</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.941777</td>\n",
+       "      <td>0.925875</td>\n",
+       "      <td>0.543982</td>\n",
+       "      <td>0.577440</td>\n",
+       "      <td>0.955124</td>\n",
+       "      <td>0.636680</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.420352</td>\n",
+       "      <td>0.603097</td>\n",
+       "      <td>0.327903</td>\n",
+       "      <td>0.420855</td>\n",
+       "      <td>0.404661</td>\n",
+       "      <td>0.800814</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.998703</td>\n",
+       "      <td>0.548769</td>\n",
+       "      <td>0.349873</td>\n",
+       "      <td>0.570207</td>\n",
+       "      <td>0.600628</td>\n",
+       "      <td>0.306336</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.137189</td>\n",
+       "      <td>0.550276</td>\n",
+       "      <td>0.629524</td>\n",
+       "      <td>0.280474</td>\n",
+       "      <td>0.034369</td>\n",
+       "      <td>0.202616</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>0.211244</td>\n",
+       "      <td>0.760948</td>\n",
+       "      <td>0.476008</td>\n",
+       "      <td>0.513651</td>\n",
+       "      <td>0.210898</td>\n",
+       "      <td>0.789951</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>0.102178</td>\n",
+       "      <td>0.416688</td>\n",
+       "      <td>0.152657</td>\n",
+       "      <td>0.678611</td>\n",
+       "      <td>0.299420</td>\n",
+       "      <td>0.395590</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   column_1  column_2  column_3  column_4  column_5  column_6\n",
+       "1  0.941777  0.925875  0.543982  0.577440  0.955124  0.636680\n",
+       "2  0.420352  0.603097  0.327903  0.420855  0.404661  0.800814\n",
+       "3  0.998703  0.548769  0.349873  0.570207  0.600628  0.306336\n",
+       "4  0.137189  0.550276  0.629524  0.280474  0.034369  0.202616\n",
+       "5  0.211244  0.760948  0.476008  0.513651  0.210898  0.789951\n",
+       "6  0.102178  0.416688  0.152657  0.678611  0.299420  0.395590"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "850fcd44-886d-42f7-88c3-1bf6874451c4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "column_1    0.468574\n",
+       "column_2    0.634275\n",
+       "column_3    0.413325\n",
+       "column_4    0.506873\n",
+       "column_5    0.417517\n",
+       "column_6    0.521998\n",
+       "dtype: float64"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df1.mean()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "1c76a969-0a4f-4d8b-b652-56646247c247",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1    0.196854\n",
+       "2    0.174556\n",
+       "3    0.246091\n",
+       "4    0.235779\n",
+       "5    0.252846\n",
+       "6    0.208292\n",
+       "dtype: float64"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df1.std(1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "763ff017-105f-426c-8e08-c884b5c86d1b",
+   "metadata": {},
+   "source": [
+    "Q5. Replace the data present in the second row of column, ‘column_2’ by a string variable then find the\n",
+    "mean of column, column_2.\n",
+    "If you are getting errors in executing it then explain why.\n",
+    "[Hint: To replace the data use df1.loc[] and equate this to string data of your choice.]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "988dcff9-7d50-4e4c-90ed-d1235b055312",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df1.iloc[1] = \"rohit\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "7506efe8-2620-447e-b41e-764105dd524a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "column_1    rohit\n",
+       "column_2    rohit\n",
+       "column_3    rohit\n",
+       "column_4    rohit\n",
+       "column_5    rohit\n",
+       "column_6    rohit\n",
+       "Name: 2, dtype: object"
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df1.iloc[1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e681a052-8af2-4317-b58b-df85851b53c2",
+   "metadata": {},
+   "source": [
+    "Q6. What do you understand about the windows function in pandas and list the types of windows\n",
+    "functions?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "54b25287-e3e4-4a2f-adef-9ddc61c4596b",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "AttributeError",
+     "evalue": "'function' object has no attribute 'window'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "Cell \u001b[0;32mIn[40], line 1\u001b[0m\n\u001b[0;32m----> 1\u001b[0m \u001b[43mdf1\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mrolling\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mwindow\u001b[49m\n",
+      "\u001b[0;31mAttributeError\u001b[0m: 'function' object has no attribute 'window'"
+     ]
+    }
+   ],
+   "source": [
+    "df1.rolling.window"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4dc19304-d6ef-4244-8658-f095af5215c9",
+   "metadata": {},
+   "source": [
+    "Q7. Write a code to print only the current month and year at the time of answering this question.\n",
+    "[Hint: Use pandas.datetime function]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "id": "2a6ecc36-4fbd-495b-ad76-c6c8db44287a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "date = pd.date_range(start = '2023-1-17', end = '2023-1-30')\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 65,
+   "id": "df375fc5-ff97-4b2e-b2a1-50d41760f812",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "DatetimeIndex(['2023-01-17', '2023-01-18', '2023-01-19', '2023-01-20',\n",
+       "               '2023-01-21', '2023-01-22', '2023-01-23', '2023-01-24',\n",
+       "               '2023-01-25', '2023-01-26', '2023-01-27', '2023-01-28',\n",
+       "               '2023-01-29', '2023-01-30'],\n",
+       "              dtype='datetime64[ns]', freq='D')"
+      ]
+     },
+     "execution_count": 65,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6f41f295-ec56-41eb-adec-e86a3d6ebea0",
+   "metadata": {},
+   "source": [
+    "Q8. Write a Python program that takes in two dates as input (in the format YYYY-MM-DD) and\n",
+    "calculates the difference between them in days, hours, and minutes using Pandas time delta. The\n",
+    "program should prompt the user to enter the dates and display the result."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 66,
+   "id": "7c740eef-33c6-4a58-b3ba-fbfa8e2dd313",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Timedelta('1 days 05:45:00')"
+      ]
+     },
+     "execution_count": 66,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pd.Timedelta(days= 1,hours = 5 ,minutes = 45)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a474c271-7450-430d-9496-c0b79c34d64e",
+   "metadata": {},
+   "source": [
+    "Q9. Write a Python program that reads a CSV file containing categorical data and converts a specified\n",
+    "column to a categorical data type. The program should prompt the user to enter the file path, column\n",
+    "name, and category order, and then display the sorted data."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 71,
+   "id": "d0b7f7d5-3f16-4564-b1e8-44f93ea0c6b0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df1 = pd.read_csv(\"services.csv\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 75,
+   "id": "a1db4c3c-f1b2-4f15-af16-e412b4883790",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0                            Walk in or apply by phone.\n",
+       "1                    Apply by phone for an appointment.\n",
+       "2           Phone for information (403-4300 Ext. 4322).\n",
+       "3                                       Apply by phone.\n",
+       "4                                Phone for information.\n",
+       "5     Walk in or apply by phone for membership appli...\n",
+       "6     Apply by phone or be referred by a doctor, soc...\n",
+       "7                                       Apply by phone.\n",
+       "8     Walk in. Proof of residency in California requ...\n",
+       "9     Walk in. Proof of California residency to rece...\n",
+       "10    Walk in. Proof of California residency require...\n",
+       "11    Walk in or apply by phone, email or webpage re...\n",
+       "12    Walk in. Proof of California residency require...\n",
+       "13    Call for appointment. Referral from human serv...\n",
+       "14            Walk in or through other agency referral.\n",
+       "15    Walk in. Written application, identification r...\n",
+       "16                                Call for information.\n",
+       "17    Call for screening appointment. Medical visits...\n",
+       "18       Call for screening appointment (650-347-3648).\n",
+       "19                                             Walk in.\n",
+       "20                      By phone during business hours.\n",
+       "21                    Walk in or apply by phone or mail\n",
+       "22                    Walk in or apply by phone or mail\n",
+       "Name: application_process, dtype: object"
+      ]
+     },
+     "execution_count": 75,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df1['application_process']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a45f623c-1090-40ef-a4c3-df3b024a8621",
+   "metadata": {},
+   "source": [
+    "Q10. Write a Python program that reads a CSV file containing sales data for different products and\n",
+    "visualizes the data using a stacked bar chart to show the sales of each product category over time. The\n",
+    "program should prompt the user to enter the file path and display the chart."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 77,
+   "id": "739984b2-57d7-450d-bc63-82c68998dfc3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df1['sales'] = 5500"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "id": "b75fa21e-94c3-46f6-af56-3489614ba5ef",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<AxesSubplot: xlabel='sales'>"
+      ]
+     },
+     "execution_count": 85,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAh8AAAHGCAYAAADUhOmrAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjYuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8o6BhiAAAACXBIWXMAAA9hAAAPYQGoP6dpAAAqeklEQVR4nO3dfXBU9b3H8c8mIU9AEhIkCSUk6ZDwFAQkBQkqQQSMhfJUq8aLpCg0paiUKjeBooulYOmI0Tri1SrgHWmhF+V6G1QQGx6EUIhmymgKSBMIEhpFkvCgCZBz/3BYXRKExZxf9sT3a2Zn9jzkez4bHPlw9uxZl2VZlgAAAAwJaO0AAADgu4XyAQAAjKJ8AAAAoygfAADAKMoHAAAwivIBAACMonwAAACjKB8AAMCooNYOcLHGxkYdPXpUHTt2lMvlau04AADgCliWpZMnT6pr164KCPjmcxt+Vz6OHj2qhISE1o4BAACuQmVlpbp16/aN+/hd+ejYsaOkL8NHRES0choAAHAl6urqlJCQ4Pl7/Jv4Xfm48FZLREQE5QMAAIe5kksmuOAUAAAYRfkAAABGUT4AAIBRfnfNx5WwLEvnzp3T+fPnWzsKDAsMDFRQUBAfwwYAB3Nc+WhoaFBVVZXOnDnT2lHQSsLDwxUfH6/g4ODWjgIAuAqOKh+NjY0qLy9XYGCgunbtquDgYP4F/B1iWZYaGhr0ySefqLy8XCkpKZe9kQ0AwP84qnw0NDSosbFRCQkJCg8Pb+04aAVhYWFq166dDh06pIaGBoWGhrZ2JACAjxz5z0b+tfvdxp8/ADgb/xcHAABGUT4AAIBRjrrm45sk5RUaPV7F4z/0af/MzEwNGDBABQUFzW5PSkrS7NmzNXv27G8fDgAAP9Zmyoe/e/XVV9WuXbvWjgEAQKujfBgSHR3d2hEAAPALXPNhSGZmpuctlerqao0bN05hYWFKTk7WK6+80rrhAAAwiDMfrSAnJ0eVlZV65513FBwcrAceeEDV1dWtHQsA8B138fWTvl7feKUoH4bt379fb7zxhoqLizVkyBBJ0osvvqjevXu3cjIAAMzgbRfDysrKFBQUpPT0dM+6Xr16KSoqqvVCAQBgEOXDMMuyJInvpAEAfGdRPgzr3bu3zp07pz179njW7du3TzU1Na0XCgAAgygfhvXs2VO33nqrpk+frl27dqmkpET33XefwsLCWjsaAABGtJkLTu26ItcOK1as0H333afhw4crNjZWixYt0oIFC1o7FgAARrSZ8uHvioqKPM/j4uL017/+1Wv7lClTDCcCAKB18LYLAAAwivIBAACMonwAAACjKB8AAMAoygcAADCK8gEAAIyifAAAAKMoHwAAwChuMgYAgAMl5RV6nleEZntvdNe2zEHckS0/U22pfHz9F2TkeL79IWRmZmrAgAEqKCiwJ88VyMnJUU1NjdavX2/keG63W+vXr1dpaanfZAIAtD7edmmDKioq5HK5mvyl/9RTT2nlypXGcjz00EPavHmzseMBAJyh7Zz5wGVFRpo9O9ShQwd16NDB6DEBAP6PMx+t4MSJE7rnnnvUqVMnhYeHKysrSwcOHPDa591339Xw4cMVHh6uTp06acyYMTpx4oQk6c0339QNN9ygqKgoxcTEaOzYsTp48KDnZ5OTkyVJAwcOlMvlUmZmpqQv3+KYMGGCZ7/6+no98MAD6tKli0JDQ3XDDTdo9+7dnu1FRUVyuVzavHmz0tPTFR4eroyMDO3bt++KXqfb7daAAQM8y+fPn9ecOXM8uefOnSvLsnz51QEA2gDKRyvIycnRnj179Prrr2vnzp2yLEu33Xabzp49K0kqLS3VyJEj1bdvX+3cuVPbt2/XuHHjdP78eUnS6dOnNWfOHO3evVubN29WQECAJk6cqMbGRknS3//+d0nS22+/raqqKr366qvN5pg7d67WrVunVatW6b333lOPHj00ZswYffbZZ177zZ8/X0888YT27NmjoKAgTZs27ape9xNPPKGXXnpJL774orZv367PPvtMr7322lXNAgA4F2+7GHbgwAG9/vrrevfdd5WRkSFJeuWVV5SQkKD169fr9ttv19KlS5Wenq5nn33W83N9+/b1PJ88ebLXzBdffFFdunTRhx9+qLS0NF1zzTWSpJiYGMXFxTWb4/Tp01q+fLlWrlyprKwsSdILL7ygTZs26cUXX9TDDz/s2fe3v/2thg8fLknKy8vTD3/4Q33xxRcKDQ316bUXFBQoPz/fk/+5557TW2+95dMMAIDzcebDsLKyMgUFBWnIkCGedTExMerZs6fKysokfXXm41IOHjyo7Oxsff/731dERITnbZbDhw9fcY6DBw/q7NmzGjZsmGddu3btNHjwYE+OC6699lrP8/j4eElS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8vqL+cK65p5fap9LzV67dq1++ctfatq0adq4caNKS0v105/+tMmFru3atfNadrlcza5rbGy8xKu6tEvlBwC0bVf9sQPLsjRnzhzdcMMNSktLkyQdO3ZMUtOvU4+NjdWhQ4eanbNkyRKv0/9tWXFxcZPllJQUBQYGNrt/nz59tH37dq91O3bsUGpqqgIDA9WrVy+dO3dO77//vgYNGiRJ+uijj1RTU3PZLNu2bVNGRoZmzpzpWXfw4EEfX9G306dPH61fv95r3cW/IwAwKSmv0PO8IjTbe6O71nCatuuqz3zMmjVL//jHP/SnP/2pybbm/rV+8boL8vPzVVtb63lczYWLTlFZWak5c+Zo3759+tOf/qQ//OEPevDBBy+5/69+9Stt3rxZv/nNb7R//36tWrVKzzzzjOe6kF69eumWW27RjBkz9Pe//13vv/++ZsyYobCwsEv+vi/o0aOH9uzZo7feekv79+/XggULtHv37hZ9vZeTm5urgwcPen4nq1ev9rqYFgDQNl3VmY/7779fr7/+urZu3apu3bp51sfFxUn68gxIfHy8Z311dXWTsyEXhISEKCQk5GpieHHCHUfvueceff755xo8eLACAwN1//33a8aMGZfc/7rrrtPatWv1yCOP6De/+Y3i4+P12GOPKScnx7PPyy+/rHvvvVc33XST4uLitGTJEn3wwQcKDQ39xiy5ubkqLS3VHXfcIZfLpbvuukszZ87UG2+80VIv97K6d++udevW6Ze//KWeffZZDR48WIsXL25yYSwAoG3xqXxYlqX7779fr732moqKipScnOy1PTk5WXFxcdq0aZMGDhwo6cubZW3ZsoVPMOjL6ycKCgq0fPnyJtsudX+LyZMna/LkyZecGR8frw0bNniWjxw5ourqavXo0cOzrrlrK0JCQrRixQqtWLHCa/2SJUs8z5s7C1FUVHTF2S+WlJTUJMvYsWM1duxYr3U//elPr2geAMCZfCofv/jFL7R69Wr97//+rzp27Oi5xiMyMtJzqn/27NlavHixUlJSlJKSosWLFys8PFzZ2dmXmY6r8c477+jUqVPq16+fqqqqNHfuXCUlJemmm25q7WgAADTLp2s+li9frtraWmVmZio+Pt7zWLNmjWefuXPnavbs2Zo5c6bS09P18ccfa+PGjd/5e3zY5ezZs5o3b5769u2riRMn6ppr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\n",
+      "text/plain": [
+       "<Figure size 640x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "df1.plot.bar('sales')"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "8efb9ef6-bf87-4dbf-b9b5-c2586281fe70",
+   "metadata": {},
+   "source": [
+    "Q11. You are given a CSV file containing student data that includes the student ID and their test score. Write\n",
+    "a Python program that reads the CSV file, calculates the mean, median, and mode of the test scores, and\n",
+    "displays the results in a table.\n",
+    "The program should do the followingM\n",
+    "I Prompt the user to enter the file path of the CSV file containing the student dataR\n",
+    "I Read the CSV file into a Pandas DataFrameR\n",
+    "I Calculate the mean, median, and mode of the test scores using Pandas toolsR\n",
+    "I Display the mean, median, and mode in a table.\n",
+    "Assume the CSV file contains the following columnsM\n",
+    "I Student ID: The ID of the studentR\n",
+    "I Test Score: The score of the student's test."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 105,
+   "id": "c36bd99d-ee6b-4757-aa89-07f35371b899",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   Student ID  Test Score\n",
+      "0           1          85\n",
+      "1           2          90\n",
+      "2           3          80\n",
+      "3           4          75\n",
+      "4           5          85\n",
+      "5           6          82\n",
+      "6           7          78\n",
+      "7           8          85\n",
+      "8           9          90\n",
+      "9          10          85\n"
+     ]
+    }
+   ],
+   "source": [
+    "data = [\n",
+    "    [1, 85],\n",
+    "    [2, 90],\n",
+    "    [3, 80],\n",
+    "    [4, 75],\n",
+    "    [5, 85],\n",
+    "    [6, 82],\n",
+    "    [7, 78],\n",
+    "    [8, 85],\n",
+    "    [9, 90],\n",
+    "    [10, 85]\n",
+    "]\n",
+    "\n",
+    "# Create a DataFrame\n",
+    "df = pd.DataFrame(data, columns=['Student ID', 'Test Score'])\n",
+    "\n",
+    "# Display the DataFrame\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 108,
+   "id": "4350b249-647c-4f2a-b953-a235baf15568",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<bound method NDFrame._add_numeric_operations.<locals>.mean of    Student ID  Test Score\n",
+       "0           1          85\n",
+       "1           2          90\n",
+       "2           3          80\n",
+       "3           4          75\n",
+       "4           5          85\n",
+       "5           6          82\n",
+       "6           7          78\n",
+       "7           8          85\n",
+       "8           9          90\n",
+       "9          10          85>"
+      ]
+     },
+     "execution_count": 108,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.mean"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 109,
+   "id": "eecbae89-3c81-461d-9760-750e222b0c3c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<bound method NDFrame._add_numeric_operations.<locals>.median of    Student ID  Test Score\n",
+       "0           1          85\n",
+       "1           2          90\n",
+       "2           3          80\n",
+       "3           4          75\n",
+       "4           5          85\n",
+       "5           6          82\n",
+       "6           7          78\n",
+       "7           8          85\n",
+       "8           9          90\n",
+       "9          10          85>"
+      ]
+     },
+     "execution_count": 109,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.median"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 110,
+   "id": "1ee576a6-0889-416e-8d4c-594ed81b14a3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<bound method DataFrame.mode of    Student ID  Test Score\n",
+       "0           1          85\n",
+       "1           2          90\n",
+       "2           3          80\n",
+       "3           4          75\n",
+       "4           5          85\n",
+       "5           6          82\n",
+       "6           7          78\n",
+       "7           8          85\n",
+       "8           9          90\n",
+       "9          10          85>"
+      ]
+     },
+     "execution_count": 110,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.mode"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c6945057-51c7-412b-884f-257b4cd5772c",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
